@@ -22,7 +22,17 @@ class Hola extends Component {
 
 class Parrafo extends Component{
   render(){
-    return <p>{this.props.title}</p>
+    const textoBoolean = this.props.boolean ? 'Cierto' : 'Falso'
+    const mapeoArray = this.props.array.map(n => n*2)
+    return (
+    <div>
+      <p>{this.props.title}</p>
+      <p>{this.props.num}</p>
+      <p>{textoBoolean}</p>
+      <p>{mapeoArray.join(', ')}</p>
+      <p>{this.props.objeto.key2}</p>
+    </div>
+    )    
   }
 }
 
@@ -34,7 +44,13 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <Hola title="Esto es un ejemploOO"/>
-          <Parrafo title="Hola mundo, estoy usando un parrafo" />
+          <Parrafo 
+            array = { [2, 3, 10] }
+            boolean = { false }
+            num = { 3 } 
+            objeto = {{ key: 'Un valor', key2: 'Otro valor' }}
+            title = "Hola mundo, estoy usando un parrafo" 
+          />
           <a
             className="App-link"
             href="https://reactjs.org"
