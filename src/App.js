@@ -14,6 +14,19 @@ class Hola extends Component {
   }
 }
 
+// function Parrafo(props){
+//   return <p>{props.title}</p>
+// }
+
+// const Parrafo = (props) => <p>{props.title}</p>
+
+class Parrafo extends Component{
+  render(){
+    return <p>{this.props.title}</p>
+  }
+}
+
+
 class App extends Component {
   render(){
     return (
@@ -21,7 +34,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <Hola title="Esto es un ejemploOO"/>
-          <p>Hola mundo, estoy usando React</p>
+          <Parrafo title="Hola mundo, estoy usando un parrafo" />
           <a
             className="App-link"
             href="https://reactjs.org"
