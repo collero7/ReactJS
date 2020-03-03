@@ -2,40 +2,36 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-// function Hola(props){
-//   return <h3>Curso de ReacTt</h3>;
-// }
 
-// const Hola = (props) => <h3>{props.title}</h3>
-
-class Hola extends Component {
+class Hello extends Component {
   render(){
-    return <h3>{this.props.title}</h3>
+    return <h2>{this.props.title}</h2>
   }
 }
 
-// function Parrafo(props){
-//   return <p>{props.title}</p>
-// }
+class Text extends Component {
+  render() {
+    const { arrayOfNumbers, isActivated, multiply, objectWithInfo, title} = this.props
 
-// const Parrafo = (props) => <p>{props.title}</p>
+    const textoSegunBool = isActivated ? "Verdadero" : "Falso"
+    const mappedNumbers = arrayOfNumbers.map(multiply)
 
-class Parrafo extends Component{
-  render(){
-    const textoBoolean = this.props.boolean ? 'Cierto' : 'Falso'
-    const mapeoArray = this.props.array.map(n => n*2)
-    return (
+  return (
     <div>
-      <p>{this.props.title}</p>
-      <p>{this.props.num}</p>
-      <p>{textoBoolean}</p>
-      <p>{mapeoArray.join(', ')}</p>
-      <p>{this.props.objeto.key2}</p>
+      <h1>{this.props.text}</h1>
+      {title}
+      <p>{mappedNumbers.join(', ')}</p>
+      <p>{objectWithInfo.key}</p>
     </div>
-    )    
+  )
   }
+  
 }
 
+//Props por defecto
+Text.defaultProps = {
+  text: 'Titulo por defecto'
+}
 
 class App extends Component {
   render(){
@@ -43,23 +39,17 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Hola title="Esto es un ejemploOO"/>
-          <Parrafo 
-            array = { [2, 3, 10] }
-            boolean = { false }
-            num = { 3 } 
-            objeto = {{ key: 'Un valor', key2: 'Otro valor' }}
-            title = "Hola mundo, estoy usando un parrafo" 
-          />
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Aprende React
-          </a>
+          <Hello title="Esto es un ejemploOO"/>
         </header>
+      <Text
+        arrayOfNumbers = {[2, 6, 4]}
+        objectWithInfo={{key: 'First value', key2: 'Second value'}}
+        isActivated
+        multiply={(number) => number * 4 }
+        number={2} 
+        title={<h1>Este es el titulo</h1>}
+
+      />
       </div>
     );
   }
