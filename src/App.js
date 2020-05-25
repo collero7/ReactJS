@@ -17,7 +17,7 @@ class Contador extends Component {
     return (
       <div>
         <p>Componente padre: {this.state.contador}</p>
-        <ContadorNumero numero={this.state.contador} />
+        <ContadorNumero edad={30} numero={this.state.contador} />
         <p>{name}</p>
       </div>
     )
@@ -29,9 +29,22 @@ Contador.defaultProps = {
 }
 
 class ContadorNumero extends Component{
+
   render(){
-  return <span>Componente hijo: {this.props.numero}</span>
+
+    const {edad, numero} = this.props
+    
+    return (
+      <div>
+        <p>Edad: {edad}</p>
+        <span>Componente hijo: {numero}</span>
+      </div>
+    )
   }
+}
+
+ContadorNumero.defaultProps = {
+  edad: 28
 }
 
 class App extends Component {
@@ -44,5 +57,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
